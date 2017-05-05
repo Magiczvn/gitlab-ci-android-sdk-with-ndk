@@ -9,9 +9,12 @@ ENV VERSION_ANDROID_NDK "android-ndk-r14b"
 ENV SDK_PACKAGES "build-tools-${VERSION_BUILD_TOOLS},android-${VERSION_TARGET_SDK},addon-google_apis-google-${VERSION_TARGET_SDK},platform-tools,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository"
 
 ENV ANDROID_HOME "/sdk"
-ENV PATH "$PATH:${ANDROID_HOME}/tools"
+ENV ANDROID_NDK_HOME ${VERSION_ANDROID_NDK}
+
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_NDK_HOME}
+
 ENV DEBIAN_FRONTEND noninteractive
-ENV ANDROID_NDK_HOME "$ANDROID_NDK_HOME:${VERSION_ANDROID_NDK}"
+
 
 RUN apt-get -qq update && \
     apt-get install -qqy --no-install-recommends \
