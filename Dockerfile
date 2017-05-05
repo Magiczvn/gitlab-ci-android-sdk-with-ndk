@@ -34,11 +34,11 @@ RUN curl -s http://dl.google.com/android/repository/tools_r${VERSION_SDK_TOOLS}-
     rm -v /tools.zip
     
 RUN curl -s https://dl.google.com/android/repository/${VERSION_ANDROID_NDK}-linux-x86_64.zip > android-ndk.zip && \
-    unzip android-ndk.zip && \
+    unzip -q android-ndk.zip && \
     rm -f android-ndk.zip
     
 RUN curl -s https://dl.google.com/android/repository/cmake-3.6.3155560-linux-x86_64.zip > cmake.zip && \
-    unzip cmake.zip -d ${ANDROID_HOME}/cmake $ && \
+    unzip -q cmake.zip -d ${ANDROID_HOME}/cmake $ && \
     rm -f cmake.zip
 
 RUN mkdir -p $ANDROID_HOME/licenses/ \
