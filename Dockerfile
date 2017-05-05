@@ -38,7 +38,7 @@ RUN curl -s https://dl.google.com/android/repository/${VERSION_ANDROID_NDK}-linu
     rm -f android-ndk.zip
     
 RUN curl -s https://dl.google.com/android/repository/cmake-3.6.3155560-linux-x86_64.zip > cmake.zip && \
-    unzip cmake.zip -d $ANDROID_HOME/cmake $ && \
+    unzip cmake.zip -d ${ANDROID_HOME}/cmake $ && \
     rm -f cmake.zip
 
 RUN mkdir -p $ANDROID_HOME/licenses/ \
