@@ -44,6 +44,7 @@ RUN curl -s https://dl.google.com/android/repository/cmake-3.6.3155560-linux-x86
     rm -f cmake.zip
 
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_NDK_HOME}
+ENV NDK ${NDK}:${ANDROID_NDK_HOME}
 
 RUN mkdir -p $ANDROID_HOME/licenses/ \
   && echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > $ANDROID_HOME/licenses/android-sdk-license \
