@@ -8,8 +8,8 @@ ENV VERSION_ANDROID_NDK "android-ndk-r14b"
 
 ENV SDK_PACKAGES "build-tools-${VERSION_BUILD_TOOLS},android-${VERSION_TARGET_SDK},addon-google_apis-google-${VERSION_TARGET_SDK},platform-tools,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository"
 
-ENV ANDROID_HOME "~/opt/android-sdk-linux"
-ENV ANDROID_NDK_HOME "~/opt/${VERSION_ANDROID_NDK}"
+ENV ANDROID_HOME "~/android-sdk-linux"
+ENV ANDROID_NDK_HOME "~/${VERSION_ANDROID_NDK}"
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -29,12 +29,12 @@ RUN apt-get -qq update && \
 RUN rm -f /etc/ssl/certs/java/cacerts; \
     /var/lib/dpkg/info/ca-certificates-java.postinst configure
 
-RUN cd ~/opt && \
+RUN cd ~ && \
     curl -s http://dl.google.com/android/repository/tools_r${VERSION_SDK_TOOLS}-linux.zip > /tools.zip && \
     unzip /tools.zip -d ${ANDROID_HOME} && \
     rm -v /tools.zip
     
-RUN cd ~/opt && \
+RUN cd ~ && \
     curl -s https://dl.google.com/android/repository/${VERSION_ANDROID_NDK}-linux-x86_64.zip > android-ndk.zip && \
     unzip -q android-ndk.zip && \
     rm -f android-ndk.zip
